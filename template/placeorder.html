@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+
+<style>
+    .bg-custom{
+      color: rgb(85, 0, 0);
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+    }
+  </style>
+  
+
+ <!-- customer details -->
+ <div class="row">
+    <!-- <div class="col-md-9 p-2">
+        <h5 class="bg-dark-subtle p-2"> cart details </h5>
+        {% for x in products %}
+        {% if forloop.counter == 1 %}
+        <p><strong>Name :</strong>&nbsp;{{x.uid.first_name}}</p>
+        <p><strong>Mobile No:</strong>&nbsp;7264865824</p>
+        <p><strong>Email :</strong>&nbsp;{{x.uid.email}}</p>
+        {% endif %}
+        {% endfor %}
+    </div> -->
+    
+
+</div>
+
+
+<!-- cart details -->
+    <h5 class="bg-custom p-2  text-center"> Order Summary </h5>
+    <div class="row">
+        {% for x in products %}
+        <div class="col-md-4">
+            <img src="{{x.pid.pimage.url}}"  width="100%" alt="">
+
+        </div>
+
+
+        <div class="col-md-8">
+            <p><strong> Product Name :</strong>&nbsp;{{x.pid.name}}</p>
+            <p><strong>price:</strong>&nbsp;{{x.pid.price}}</p>
+            {% if x.pid.cat == 1 %}
+            <p><strong>category :</strong>&nbsp;mobile</p>
+            {% elif x.pid.cat == 2 %}
+            <p><strong>category :</strong>&nbsp;shoes</p>
+            {% else %}
+            <p><strong>category :</strong>&nbsp;clothes</p>
+            {% endif %}
+
+            <p><strong> Product Details :</strong>&nbsp;{{x.pid.pdetails}}</p>
+            <a href="/remove/{{x.pid.id}}"><button class="btn btn-danger">Remove</button></a>
+           
+
+        </div>
+    
+        {% endfor %}
+        <hr>
+
+        <div class="row ">
+            
+            <div class="col-md-3 p-2 text-center">
+                <h5 class="bg-dark-subtle p-2"> Total Amount </h5>
+                <p><strong>Total({{n}} items) :</strong>&nbsp;Rs.{{total}}</p>
+                <p><strong>Total amount:</strong>&nbsp;Rs.{{total}}</p>
+                <a href="/makepayment"><button class="btn btn-success">Make payment</button></a>
+            </div>
+          
+            </div>
+        <hr>
+    </div>
+
+
+    {% endblock 'main' %}

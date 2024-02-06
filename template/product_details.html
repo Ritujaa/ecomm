@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+
+<style>
+    .product-statement {
+    margin-top: 20px;
+}
+
+.genuine-products, .return-policy {
+    text-align: center; /* Center-align the text */
+    font-weight: bold; /* Make the text bold */
+    margin-bottom: 10px; /* Add some space between the statements */
+}
+
+.genuine-products {
+    color: green; /* Change the text color for genuine products */
+}
+
+.return-policy {
+    color: red; /* Change the text color for the return policy */
+    
+}
+
+.additional-description {
+    margin-top: 20px; /* Add margin to separate from other sections */
+    padding: 20px; /* Add padding for spacing and readability */
+    background-color: #fce4ec; /* Set background color */
+    border: 1px solid #ddd; /* Add border for distinction */
+    border-radius: 5px; /* Add border radius for rounded corners */
+}
+
+.additional-description h3 {
+    font-size: 20px; /* Increase font size for headings */
+    color: #333; /* Set color for headings */
+    margin-bottom: 10px; /* Add margin below headings */
+}
+
+.additional-description p {
+    font-size: 16px; /* Set font size for paragraphs */
+    color: #555; /* Set color for paragraphs */
+    line-height: 1.5; /* Set line height for better readability */
+}
+
+     .features {
+      white-space: nowrap; /* Prevents wrapping */
+      overflow-x: auto; /* Enables horizontal scrolling */
+    } 
+    .feature {
+      margin-right: 20px; /* Adds space between features */
+      display: inline-block; /* Displays features in a single line */
+      vertical-align: top;
+    }
+    .feature img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+
+
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="row">
+    <div class="col-md-8 mt-4 mx-auto">
+        <div class="row">
+            {% for x in products %}
+            <div class="col-md-6 mx-auto">
+                <img src="{{x.pimage.url}}" width="100%" height="100%">
+
+                <div class="product-statement mt-3">
+                    <p class="genuine-products text-center"><strong>100% Genuine Products</strong></p>
+                    <p class="return-policy text-center"><strong>Easy Return Policy</strong></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p><strong> Product Name :</strong>&nbsp;{{x.name}}</p>
+                <p><strong>Price:</strong>&nbsp;{{x.price}}</p>
+                <!-- Add category logic here -->
+                <p><strong> Product Details :</strong>&nbsp;{{x.pdetails}}</p>
+                <p><strong> Offers :</strong>&nbsp;{{x.offers}}</p>
+
+                <p><strong>Ratings: ({{x.num_ratings}})</strong><br>
+                    <!-- {% for i in "12345" %}
+                        {% if i|add:"-1" < x.rating %} -->
+                            <span class="fa fa-star checked"></span>
+                        <!-- {% else %} -->
+                            <span class="fa fa-star"></span>
+                        <!-- {% endif %}
+                    {% endfor %} -->
+                </p>
+
+                <p><strong> Reviews :</strong>&nbsp;{{x.num_reviews}}</p>
+
+                <div class="col mt-3">
+                    <ul class="product-details-list">
+                        <li><strong>Item Form:</strong> {{ x.item_form }}</li>
+                        <li><strong>Skin Type:</strong> {{ x.skin_type }}</li>
+                        <li><strong>Brand:</strong> {{ x.brand }}</li>
+                        <li><strong>Number of Items:</strong> {{ x.number_of_items }}</li>
+                        <li><strong>Net Quantity:</strong> {{ x.net_quantity }}</li>
+                    </ul>
+                </div>
+
+                <div class="mt-3">
+                    <a href="/addtocart/{{x.id}}"><button class="btn btn-danger">Add to Cart</button></a>
+                    <a href="/cart"><button class="btn btn-danger ml-2">View Cart</button></a>
+                    <a href="/home"><button class="btn btn-danger ml-2">Shop More</button></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <hr>
+
+        <div class="feature-list">
+            <div class="feature">
+                <img src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-returns._CB484059092_.png" alt="Non-Returnable Icon">
+                <span>Non-Returnable</span>
+            </div>
+            <div class="feature">
+                <img src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-cod._CB485937110_.png" alt="Pay on Delivery Icon">
+                <span>Pay on Delivery</span>
+            </div>
+            <div class="feature">
+                <img src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-amazon-delivered._CB485933725_.png" alt="Amazon Delivered Icon">
+                <span>beauty Delivered</span>
+            </div>
+            <div class="feature">
+                <img src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-top-brand._CB617044271_.png" alt="Top Brand Icon">
+                <span>Top Brand</span>
+            </div>
+            <div class="feature">
+                <img src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/trust_icon_free_shipping_81px._CB630870460_.png" alt="Free Delivery Icon">
+                <span>Free Delivery</span>
+            </div>
+            <div class="feature">
+                <img src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/Secure-payment._CB650126890_.png" alt="Secure Transaction Icon">
+                <span>Secure Transaction</span>
+            </div>
+        </div>
+        
+    </div>
+
+
+    </div>
+
+    <!-- Additional Description Section -->
+    <div class="additional-description mt-4">
+        <div class="col">
+            <h3>Product Description</h3>
+            {% for x in products %}
+                <p>{{x.pdescription}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock 'main' %}

@@ -1,0 +1,117 @@
+{% load static %}
+{% block 'main' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}">
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            background-image: url(https://img.freepik.com/free-vector/gradient-monochromatic-abstract-background_52683-74302.jpg?size=626&ext=jpg&ga=GA1.1.262735693.1700487377&semt=ais); /* Example background color */
+            font-family: Arial, sans-serif; /* Example font family */
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .registration-form {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+        }
+
+        .btn-register {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-register:hover {
+            background-color: #0056b3;
+        }
+
+        .login-link {
+            margin-left: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .register-link {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="registration-form">
+                    <h2 class="mb-4 text-center">User Registration</h2>
+                    {% if errormsg %}
+                    <div class="alert alert-danger">
+                        {{ errormsg }}
+                    </div>
+                    {% endif %}
+                    
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="Input1" class="form-label">Email Address:</label>
+                            <input type="email" class="form-control" id="Input1" name="uname" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Input2" class="form-label">Password:</label>
+                            <input type="password" class="form-control" id="Input2" name="upass" placeholder="Enter your password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Input3" class="form-label">Confirm Password:</label>
+                            <input type="password" class="form-control" id="Input3" name="upsc" placeholder="Confirm your password" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-register btn-block" value="Register">
+                        </div>
+
+                        
+                    {% if success %}
+                    <div class="alert alert-success">
+                        {{ success }}
+                    </div>
+                    {% endif %}
+                        
+                        <div class="form-group text-center">
+                            Already registered? <a href="/login" class="login-link">Login here</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock 'main' %}

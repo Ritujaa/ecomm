@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+      
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('your-background-image.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .overlay {
+           background-image: url(https://images.unsplash.com/photo-1503455637927-730bce8583c0?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFja2dyb3VuZCUyMGltYWdlJTIwZGFyayUyMHBpbmt8ZW58MHx8MHx8fDA%3D); /* Adjust opacity as needed */
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        
+        .contact-form-container {
+    max-width: 400px; /* Adjust width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* background-image: url(https://images.unsplash.com/photo-1503455637927-730bce8583c0?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFja2dyb3VuZCUyMGltYWdlJTIwZGFyayUyMHBpbmt8ZW58MHx8MHx8fDA%3D); */
+    background-color: lightpink;
+}
+
+
+
+
+  
+
+    </style>
+</head>
+<body>
+  <div class="section">
+    <div class="overlay">
+      <br>&nbsp;
+        
+        
+        <h1 style="color: white;">WE WOULD LOVE TO HEAR FROM YOU!</h1>
+        <br>&nbsp;
+    
+  </div>
+
+    <div class="container text-center">&nbsp;
+      <h1>Reach Us</h1>&nbsp;
+      <div class="row mt-4">
+        <div class="col-md-6 mt-5">
+            <h3><i class="bi bi-building-fill text-danger"></i></h3>
+            <h4>Address</h4>
+            <p>Flat no-C404 Krishndarshan Apartment,<br>
+            Shivshakti Nagar, Cidco<br>
+            Nashik-422009</p>
+            <h6><i class="bi bi-telephone-fill text-danger"></i>&nbsp; : 7264865824</h6>
+            <h6><i class="bi bi-envelope-at-fill text-danger"></i> : ritujahire@gmail.com</h6>
+        </div>
+    
+        <div class="col-md-6">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3897.8850575640463!2d76.6256462109587!3d12.323522687885127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf7a902001f1ed%3A0xfb464f923c20f400!2sThe%20Makeup%20Company!5e0!3m2!1sen!2sin!4v1706948073627!5m2!1sen!2sin" width="400" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>&nbsp;&nbsp;
+    </div>
+    
+    <div class="row mt-4">
+      <div class="col-md-6 p-3">
+          <!-- Contact Form -->
+          <div class="contact-form-container ">
+              <h1>Contact Us</h1>
+              <form action="#" method="post">
+                  <label for="name">Your Name:</label>
+                  <input type="text" id="name" name="name" required>
+  
+                  <label for="email">Your Email:</label>
+                  <input type="email" id="email" name="email" required>
+  
+                  <label for="subject">Subject:</label>
+                  <input type="text" id="subject" name="subject" required>
+  
+                  <label for="message">Message:</label>
+                  <textarea id="message" name="message" required cols="2" rows="3"></textarea>
+
+                  <div class="btn btn-danger">send</div>
+              </form>
+          </div>
+      </div>
+      <div class="col-md-6 p-3">
+          <!-- FAQ Section -->
+          <div class="faq-section">
+              <h2>FAQ</h2>
+              <div class="faq-item">
+                  <h6 style="font-weight: bold;">How does Beutyblend verify product authenticity?</h6>
+                  <p>At Beutyblend, we only sell 100% authentic products which are either sourced directly from the brand or their authorized distributors, and never from the grey market.</p>
+              </div>
+              <div class="faq-item">
+                  <h6 style="font-weight: bold;"">Can International Brands looking to expand to India list on Nykaa?</h6>
+                  <p>Yes! Reach out to us at partner4india@beauty.com to know more</p>
+              </div>
+              <!-- Add more FAQ items as needed -->
+          </div>
+
+
+          <img src="{% static 'static/images/logo3.png' %}" alt="Logo" height="70px" width="80px" >
+      </div>
+  </div>
+  
+
+
+
+
+{% endblock 'main' %}

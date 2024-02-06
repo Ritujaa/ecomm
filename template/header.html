@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <link rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'static/css/syle.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+  
+  img {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+      
+  
+  .bg-custom-color {
+background-color:rgb(161, 104, 114) !important; /* Add your desired background color here */
+}
+
+.logo-container {
+width: 40px; /* Adjust the size of the circular container */
+height: 40px;
+border-radius: 50%; /* Makes the container circular */
+overflow: hidden; /* Ensures the image stays within the circle */
+margin-right: 10px; /* Add some spacing between the logo and brand name */
+}
+
+.logo-img {
+width: 100%; /* Ensures the image fills the circular container */
+height: auto; /* Maintains aspect ratio */
+}
+  
+      </style>
+
+</head>
+<body>
+
+  <script src="{% static 'static/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'static/js/popper.js' %}"></script>
+  <script src="{% static 'static/js/main.js' %}"></script>
+
+
+    <div class="container bg-dark-subtle ">
+      <div class="row">
+<!-- nav -->
+
+<div class="col-12">
+  <nav class="navbar navbar-expand-lg navbar bg-custom-color border-bottom border-body" data-bs-theme="dark">
+    <div class="container-fluid">
+      <div class="logo-container">
+      <img src="{% static 'static/images/logo3.png' %}" alt="Logo" height="70px" width="80px">
+      </div>
+      <a class="navbar-brand" href="/index1">
+        <strong>Beautyblend</strong></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" ari-current="page" href="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+
+          {% if user.is_authenticated %}
+
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+
+          {% else %}
+        
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+        
+
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+          </li>
+
+          {% endif %}
+
+      </div>
+    </div>
+  </nav>     
+</div>
+
+<!-- end nav -->

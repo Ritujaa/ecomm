@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+
+<style>
+  .bg-custom{
+    color: rgb(85, 0, 0);
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+  }
+</style>
+
+ <!-- customer details -->
+ <div class="row">
+    <div class="col-md-12 p-2">
+        <h5 class=" p-2 bg-custom">Customer Details</h5>
+        {% for x in products %}
+        {% if forloop.counter == 1 %}
+        <p><strong>Name :</strong>&nbsp;{{x.uid.first_name}}</p>
+        <p><strong>Mobile No:</strong>&nbsp;7264865824</p>
+        <p><strong>Email :</strong>&nbsp;{{x.uid.email}}</p>
+        {% endif %}
+        {% endfor %}
+    </div>
+    
+</div>
+
+
+<!-- cart details -->
+    <h5 class="bg-custom p-2">Shopping Cart </h5><hr>
+    <div class="row">
+        {% for x in products %}
+        <div class="col-md-4">
+            <img src="{{x.pid.pimage.url}}"  width="100%" alt="">
+
+        </div>
+
+
+        <div class="col-md-8">
+            <p><strong> Product Name :</strong>&nbsp;{{x.pid.name}}</p>
+            <p><strong>price:</strong>&nbsp;{{x.pid.price}}</p>
+            {% if x.cat == 1 %}
+            <p class="card-text">makeup</p>
+            {% elif x.cat == 2 %}
+            <p class="card-text">skincare</p>
+          {% elif x.cat == 3 %}
+            <p class="card-text">hair</p>
+          {% elif x.cat == 4 %}
+            <p class="card-text">fragrance</p>
+          {% elif x.cat == 5 %}
+            <p class="card-text">bath&body</p>
+          {% else %}
+            <p class="card-text">health & wellness</p>  
+          {% endif %}
+
+            <p><strong> Product Details :</strong>&nbsp;{{x.pid.pdetails}}</p>
+
+            <p>
+                <strong>QTY:</strong>
+                <a href="/updateqty/0/{{x.id}}"><button class="btn btn-success">-</button></a>
+                <input type="number" value="{{x.qty}}">
+                <a href="/updateqty/1/{{x.id}}"><button class="btn btn-success">+</button></a>
+              
+            </p>
+
+            <a href="/remove/{{x.id}}"><button class="btn btn-danger">Remove</button></a>
+           
+
+        </div><hr>
+
+        
+        {% endfor %}
+        
+
+        
+        <hr>
+        
+        <div class="row ">
+            
+            <div class="col-md-3 p-2 text-center">
+                <h5 class="bg-custom p-2"> Total Amount </h5>
+                <p><strong>Total({{n}} items) :</strong>&nbsp;Rs.{{total}}</p>
+                <p><strong>Total amount:</strong>&nbsp;Rs.{{total}}</p>
+                <a href="/placeorder"><button class="btn btn-success">Place Order</button></a>
+                <a href="/home"><button class="btn btn-success">shop more</button></a>
+            </div>
+          
+            </div>
+
+    </div>
+
+
+    {% endblock 'main' %}
